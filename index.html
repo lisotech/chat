@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>LisoStream - Live Peer-to-Peer Streaming & Communication</title>
+    <title>Web-Video Call</title>
+    <!-- Favicon (Browser tab icon) -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
     <!-- Tailwind CSS for utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -135,11 +138,12 @@
     <!-- Top Navigation Bar -->
     <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between shadow-lg">
         <div class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer" onclick="resetToLobby()">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-purple-500 flex items-center justify-center shadow-lg shadow-brand-500/30">
-                <i data-lucide="video" class="w-4 h-4 sm:w-5 sm:h-5 text-white"></i>
+            <!-- Logo Image Container -->
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden flex items-center justify-center bg-slate-800 border border-white/10 shadow-lg shadow-brand-500/20">
+                <img src="logo.png" alt="Logo" class="w-full h-full object-cover">
             </div>
             <div>
-                <span class="text-lg sm:text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-purple-400">LisoStream</span>
+                <span class="text-lg sm:text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-purple-400">Web-Video Call</span>
                 <span class="hidden sm:inline-block ml-2 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30">Live P2P</span>
             </div>
         </div>
@@ -400,7 +404,7 @@
                 <div id="chatMessages" class="flex-1 p-3.5 overflow-y-auto space-y-2.5 text-xs">
                     <!-- System Welcome Message -->
                     <div class="bg-slate-800/60 p-2.5 rounded-xl border border-white/5 text-slate-400 text-center text-[11px] leading-relaxed">
-                        ✨ Connected to LisoStream Room! You can chat and send reactions live with your peer.
+                        ✨ Connected to Web-Video Call! You can chat and send reactions live with your peer.
                     </div>
                 </div>
 
@@ -425,11 +429,11 @@
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-400">
-                    <i data-lucide="video" class="w-5 h-5"></i>
+                <div class="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center bg-slate-800 border border-white/10">
+                    <img src="logo.png" alt="Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
-                    <h3 class="text-base sm:text-lg font-bold text-white">About LisoStream</h3>
+                    <h3 class="text-base sm:text-lg font-bold text-white">About Web-Video Call</h3>
                     <p class="text-xs text-slate-400">P2P Live Streaming Platform</p>
                 </div>
             </div>
@@ -448,7 +452,7 @@
 
     <script>
         /*
-         * LisoStream Application Logic
+         * Web-Video Call Application Logic
          * Features 4-Digit Code PIN, Mobile Responsive Layouts, WebRTC Peer Connection,
          * Video/Audio Toggles, Demo Simulation & Live Chat.
          */
@@ -580,7 +584,7 @@
                 ctx.fillStyle = '#ffffff';
                 ctx.font = 'bold 22px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('LisoStream Camera', canvas.width/2, canvas.height/2 + 8);
+                ctx.fillText('Web-Video Call', canvas.width/2, canvas.height/2 + 8);
                 
                 requestAnimationFrame(draw);
             }
@@ -601,7 +605,7 @@
 
         // PeerJS Connection Setup
         function setupPeerConnection(roomCode, isHost) {
-            const peerId = isHost ? `lisostream-${roomCode}-host` : `lisostream-${roomCode}-guest`;
+            const peerId = isHost ? `webvideocall-${roomCode}-host` : `webvideocall-${roomCode}-guest`;
             
             if (peer) peer.destroy();
 
@@ -617,7 +621,7 @@
 
             peer.on('open', (id) => {
                 if (!isHost) {
-                    connectToHost(`lisostream-${roomCode}-host`);
+                    connectToHost(`webvideocall-${roomCode}-host`);
                 }
             });
 
@@ -753,7 +757,7 @@
                 const simStream = createFallbackCanvasStream();
                 attachRemoteStream(simStream);
 
-                const messages = ["Hello from mobile!", "LisoStream is running smooth 🔥", "Can you hear me fine?", "Awesome 4-digit setup! 👏"];
+                const messages = ["Hello from mobile!", "Web-Video Call is running smooth 🔥", "Can you hear me fine?", "Awesome 4-digit setup! 👏"];
                 const emojis = ["❤️", "🔥", "🎉", "😂", "👏"];
 
                 simulationInterval = setInterval(() => {
